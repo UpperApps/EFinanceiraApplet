@@ -111,8 +111,8 @@ public class EFinanceiraApplet extends AbstractAppletExecute {
 	private final String IDCERTPROD = "4f96a2a59ef1248411e0ec4b3aed7f3c3e2d6727";
 
 	// Local da chave pública no sistema de arquivos.
-	public static final String PATH_CHAVE_PUBLICA_PREPROD = "G:\\E-Financeira\\Chave_Publica\\preprod-efinancentreposto.receita.fazenda.gov.br.cer";
-	public static final String PATH_CHAVE_PUBLICA_PROD = "G:\\E-Financeira\\Chave_Publica\\efinanc_web.cer";
+	public static final String PATH_CHAVE_PUBLICA_PREPROD = "X:\\E-Financeira\\Chave_Publica\\preprod-efinancentreposto.receita.fazenda.gov.br.cer";
+	public static final String PATH_CHAVE_PUBLICA_PROD = "X:\\E-Financeira\\Chave_Publica\\efinanc_web.cer";
 
 	// Define o algorítmo de criptografia como AES.
 	private static final String AES_ALGORITHM = "AES/CBC/PKCS7Padding";
@@ -121,11 +121,11 @@ public class EFinanceiraApplet extends AbstractAppletExecute {
 	private static final int IV_SIZE = 16;
 
 	// Diretório onde ficam os arquivos de eventos do e-Financeira.
-	private final String DIRETORIO = "G:\\E-Financeira\\";
+	private final String DIRETORIO = "X:\\E-Financeira\\";
 
 	// Parâmetros de configuração do proxy.
-	private final int PORTA_PROXY = 3128;
-	private final String ENDERECO_PROXY = "proxykrb.intra.previ.com.br";
+	private final int PORTA_PROXY = 7777;
+	private final String ENDERECO_PROXY = "myproxy.com.br";
 
 	// NameSpace para geração de UUIDs, conforme
 	// https://tools.ietf.org/html/rfc4122#page-30
@@ -259,7 +259,7 @@ public class EFinanceiraApplet extends AbstractAppletExecute {
 				// conforme o ambiente de execução.
 				String idCertificado = null;
 				String pathChavePublica = null;
-				if (ambiente.equals("PRD01")) {
+				if (ambiente.equals("PROD")) {
 					idCertificado = IDCERTPROD;
 					pathChavePublica = PATH_CHAVE_PUBLICA_PROD;
 				} else {
@@ -619,7 +619,7 @@ public class EFinanceiraApplet extends AbstractAppletExecute {
 
 			// Define o url a ser usado de acordo com o ambiente de execução.
 			URL url = null;
-			if ("PRD01".equals(ambiente)) {
+			if ("PROD".equals(ambiente)) {
 				url = new URL(URL_PRODUCAO);
 			} else {
 				url = new URL(URL_PRE_PRODUCAO);
